@@ -1,0 +1,5 @@
+FROM qwen3-coder:30b-a3b
+
+PARAMETER temperature 0.7
+PARAMETER num_ctx 32768
+PARAMETER num_predict -1

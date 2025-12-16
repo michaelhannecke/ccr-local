@@ -1,0 +1,29 @@
+{
+  "LOG": true,
+  "LOG_LEVEL": "debug",
+  "HOST": "0.0.0.0",
+  "APIKEY": "ccr-local-secret-change-me",
+  "API_TIMEOUT_MS": 600000,
+  "CUSTOM_ROUTER_PATH": "/root/.claude-code-router/custom-router.js",
+  "Providers": [
+    {
+      "name": "ollama",
+      "api_base_url": "http://host.docker.internal:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "supports_thinking": false,
+      "transformers": ["cleancache"],
+      "models": [
+        "qwen3-coder:30b",
+        "qwen3:8b",
+        "gemma3:27b",
+        "llama2:latest",
+        "gpt-oss:20b"
+      ]
+    }
+  ],
+  "Router": {
+    "default": "ollama,qwen3-coder:30b",
+    "think": "",
+    "background": "ollama,gpt-oss:20b"
+  }
+}

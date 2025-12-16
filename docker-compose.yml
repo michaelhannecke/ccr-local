@@ -1,0 +1,18 @@
+services:
+  claude-code-router:
+    build: .
+    container_name: ccr
+    ports:
+      - "127.0.0.1:3456:3456"  # Nur localhost, nicht netzwerkweit
+    volumes:
+      - ./config.json:/root/.claude-code-router/config.json:ro
+      - ./custom-router.js:/root/.claude-code-router/custom-router.js:ro
+      - ./logs:/root/.claude-code-router/logs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://0.0.0.0:3456/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
