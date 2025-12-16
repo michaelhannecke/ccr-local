@@ -105,7 +105,9 @@ ollama serve
 # 3. Pull a code model
 ollama pull qwen3-coder:30b-a3b
 
-# 4. Update config.json with your models (check with: ollama list)
+# 4. Create your config from the example and customize it
+cp config.example.json config.json
+# Edit config.json with your models (check available with: ollama list)
 
 # 5. Start the Docker container
 docker compose up -d --build
@@ -200,11 +202,16 @@ curl http://localhost:11434/v1/models
 
 #### Configure Your Models
 
-Edit `config.json` to match your installed Ollama models:
+Copy the example config and customize it for your installed Ollama models:
 
 ```bash
+# Create your local config
+cp config.example.json config.json
+
 # Check available models
 ollama list
+
+# Edit config.json with your preferred editor
 ```
 
 Example `config.json`:
@@ -346,6 +353,8 @@ docker logs ccr -f
 ## Configuration
 
 ### Router Configuration (`config.json`)
+
+> **Note:** Copy `config.example.json` to `config.json` before customizing. The `config.json` file is ignored by git to protect your API keys.
 
 | Field | Description |
 |-------|-------------|

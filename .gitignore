@@ -1,6 +1,5 @@
 # Logs
 logs/
 
-# Keep config.json out of git if it contains real API keys
-# Uncomment the line below after customizing your APIKEY
-# config.json
+# User's local config (may contain API keys)
+config.json
